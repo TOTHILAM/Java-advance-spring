@@ -22,7 +22,7 @@ public class PostMapper {
         dto.setContent(post.getContent());
         dto.setCreateAt(post.getCreateAt());
         dto.setUpdateAt(post.getUpdateAt());
-        return dto;
+        return dto.withSelfRel();
     }
 
     public static void map(PostUpdateForm form, Post post) {
