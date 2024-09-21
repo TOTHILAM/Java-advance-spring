@@ -7,6 +7,8 @@ import com.vti.springframework.form.PostUpdateForm;
 import com.vti.springframework.mapper.PostMapper;
 import com.vti.springframework.repository.PostRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,12 +20,9 @@ public class PostServiceImpl implements PostService {
     private PostRepository postRepository;
 
     @Override
-    public List<PostDto> findAll() {
-//        lamda, method reference
-        return postRepository.findAll()
-                .stream()
-                .map(PostMapper::map)
-                .toList();
+    public Page<PostDto> findAll(Pageable pageable) {
+        return postRepository.findAll(pageable)
+                .map(PostMapper::map);
     }
 
     @Override

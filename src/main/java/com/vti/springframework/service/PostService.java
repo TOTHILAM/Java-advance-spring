@@ -4,11 +4,13 @@ import com.vti.springframework.dto.PostDto;
 import com.vti.springframework.entity.Post;
 import com.vti.springframework.form.PostCreateForm;
 import com.vti.springframework.form.PostUpdateForm;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
 public interface PostService {
-    List<PostDto> findAll();
+    Page<PostDto> findAll(Pageable pageable);
 
     PostDto findById(Long id);
 

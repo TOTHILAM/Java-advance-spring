@@ -7,6 +7,8 @@ import com.vti.springframework.mapper.CommentMapper;
 import com.vti.springframework.repository.CommentRepository;
 import com.vti.springframework.repository.PostRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,10 +20,9 @@ public class CommentServiceImpl implements CommentService{
     private PostRepository postRepository;
 
     @Override
-    public List<CommentDto> findAll() {
-        return commentRepository.findAll()
-                .stream().map(CommentMapper::map)
-                .toList();
+    public Page<CommentDto> findAll(Pageable pageable) {
+        return commentRepository.findAll(pageable)
+                .map(CommentMapper::map);
     }
 
     @Override

@@ -6,6 +6,8 @@ import com.vti.springframework.form.PostCreateForm;
 import com.vti.springframework.form.PostUpdateForm;
 import com.vti.springframework.service.PostService;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,8 +18,8 @@ public class PostController {
     private PostService postService;
 
     @GetMapping("/api/v1/posts")
-    public List<PostDto> findAll() {
-        return postService.findAll();
+    public Page<PostDto> findAll(Pageable pageable) {
+        return postService.findAll(pageable);
     }
 
     @GetMapping("/api/v1/posts/{id}")
