@@ -22,6 +22,21 @@ public class PostController {
         return postService.findAll(pageable);
     }
 
+    @GetMapping(value = "/api/v1/posts/search", params = "title")
+    public List<PostDto> findByTitle(@RequestParam("title") String title) {
+        return postService.findByTitle(title);
+    }
+
+    @GetMapping(value = "/api/v1/posts/search", params = {"minId", "maxId"})
+    public List<PostDto> findByIdBetween(@RequestParam("minId") Long minId, @RequestParam("maxId") Long maxId) {
+        return postService.findByIdBetween(minId, maxId);
+    }
+
+    @GetMapping(value = "/api/v1/posts/search", params = "search")
+    public Page<PostDto> findByTitleContaining(@RequestParam("search") String search, Pageable pageable) {
+        return postService.findByTitleContaining(search, pageable);
+    }
+
     @GetMapping("/api/v1/posts/{id}")
     public PostDto findById(@PathVariable("id") Long id) {
         return postService.findById(id);
@@ -37,8 +52,18 @@ public class PostController {
         return postService.update(id,form);
     }
 
+    @PatchMapping("/api/v1/posts/{id}/title")
+    public void updateTitle(@PathVariable("id") Long id, @RequestBody String title) {
+        postService.updateTitle(id, title);
+    }
+
     @DeleteMapping("/api/v1/posts/{id}")
     public void deleteById(@PathVariable("id") Long id) {
         postService.deleteById(id);
+    }
+
+    @DeleteMapping(value = "/api/v1/posts/delete", params = "title")
+    public void deleteByTitle(@RequestParam("title") String title) {
+        postService.deleteByTitle(title);
     }
 }

@@ -24,6 +24,8 @@ public interface PostService {
 
     PostDto update(Long id, PostUpdateForm form);
 
+    void updateTitle(Long id, String title);
+
     void deleteById(Long id);
 
     void deleteByTitle(String title);
