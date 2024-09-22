@@ -1,4 +1,4 @@
-package com.vti.springframework;
+package com.vti.kshop;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
