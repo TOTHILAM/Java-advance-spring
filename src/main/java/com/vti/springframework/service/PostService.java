@@ -14,11 +14,19 @@ public interface PostService {
 
     PostDto findById(Long id);
 
+    List<PostDto> findByTitle(String title);
+
+    List<PostDto> findByIdBetween(Long minId, Long maxId);
+
+    Page<PostDto> findByTitleContaining(String search, Pageable pageable);
+
     PostDto create(PostCreateForm form);
 
     PostDto update(Long id, PostUpdateForm form);
 
     void deleteById(Long id);
+
+    void deleteByTitle(String title);
 
 
 }

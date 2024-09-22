@@ -33,6 +33,24 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
+    public List<PostDto> findByTitle(String title) {
+        return postRepository.findByTitle(title)
+                .stream()
+                .map(PostMapper::map)
+                .toList();
+    }
+
+    @Override
+    public List<PostDto> findByIdBetween(Long minId, Long maxId) {
+        return List.of();
+    }
+
+    @Override
+    public Page<PostDto> findByTitleContaining(String search, Pageable pageable) {
+        return null;
+    }
+
+    @Override
     public PostDto create(PostCreateForm form) {
         var post = PostMapper.map(form);
         var savePost = postRepository.save(post);
@@ -54,5 +72,10 @@ public class PostServiceImpl implements PostService {
     @Override
     public void deleteById(Long id) {
         postRepository.deleteById(id);
+    }
+
+    @Override
+    public void deleteByTitle(String title) {
+
     }
 }
