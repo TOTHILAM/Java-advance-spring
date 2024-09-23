@@ -7,6 +7,7 @@ import com.vti.kshop.service.CarService;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -21,22 +22,24 @@ public class CarController {
     }
 
     @PostMapping("/api/v1/cars")
+    @ResponseStatus(HttpStatus.CREATED)
     public CarDto create(@RequestBody CarCreateForm form) {
         return carService.create(form);
     }
 
     @GetMapping("/api/v1/cars/{id}")
-    public CarDto findById(@PathVariable(name = "id") Long id) {
+    public CarDto findById(@PathVariable("id") Long id) {
         return carService.findById(id);
     }
 
     @PutMapping("/api/v1/cars/{id}")
-    public CarDto update(@PathVariable(name = "id") Long id,@RequestBody CarUpdateForm form) {
+    public CarDto update(@PathVariable("id") Long id, @RequestBody CarUpdateForm form) {
         return carService.update(id, form);
     }
 
     @DeleteMapping("/api/v1/cars/{id}")
-    public void deleteById(@PathVariable(name = "id") Long id) {
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteById(@PathVariable("id") Long id) {
         carService.deleteById(id);
     }
 }

@@ -31,7 +31,7 @@ public class CarServiceImpl implements CarService{
     @Override
     public CarDto create(CarCreateForm form) {
         var car = CarMapper.map(form);
-        var savedCar =carRepository.save(car);
+        var savedCar = carRepository.save(car);
         return CarMapper.map(savedCar);
     }
 
