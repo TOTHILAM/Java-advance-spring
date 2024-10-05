@@ -3,6 +3,7 @@ package com.vti.springframework.controller;
 import com.vti.springframework.dto.PostDto;
 import com.vti.springframework.entity.Post;
 import com.vti.springframework.form.PostCreateForm;
+import com.vti.springframework.form.PostFilterForm;
 import com.vti.springframework.form.PostUpdateForm;
 import com.vti.springframework.service.PostService;
 import lombok.AllArgsConstructor;
@@ -18,8 +19,8 @@ public class PostController {
     private PostService postService;
 
     @GetMapping("/api/v1/posts")
-    public Page<PostDto> findAll(Pageable pageable) {
-        return postService.findAll(pageable);
+    public Page<PostDto> findAll(PostFilterForm form, Pageable pageable) {
+        return postService.findAll(form, pageable);
     }
 
     @GetMapping(value = "/api/v1/posts/search", params = "title")

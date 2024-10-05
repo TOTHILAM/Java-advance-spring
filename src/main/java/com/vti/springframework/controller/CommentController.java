@@ -2,6 +2,7 @@ package com.vti.springframework.controller;
 
 import com.vti.springframework.dto.CommentDto;
 import com.vti.springframework.form.CommentCreateForm;
+import com.vti.springframework.form.CommentFilterForm;
 import com.vti.springframework.form.CommentUpdateForm;
 import com.vti.springframework.service.CommentService;
 import lombok.AllArgsConstructor;
@@ -17,8 +18,8 @@ public class CommentController {
     private CommentService commentService;
 
     @GetMapping("/api/v1/comments")
-    public Page<CommentDto> findAll(Pageable pageable) {
-        return commentService.findAll(pageable);
+    public Page<CommentDto> findAll(CommentFilterForm form, Pageable pageable) {
+        return commentService.findAll(form, pageable);
     }
 
     @GetMapping("/api/v1/comments/{id}")
