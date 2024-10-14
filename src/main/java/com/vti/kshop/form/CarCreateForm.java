@@ -12,8 +12,8 @@ import java.time.LocalDate;
 @Getter
 @Setter
 public class CarCreateForm {
-    @NotBlank(message = "Car license plate date must not be null")
-    @Length(max = 10, message = "Car license plate has max 10 characters")
+    @NotBlank(message = "{car.licensePlate.NotBlank.message}")
+    @Length(max = 10, message = "{car.licensePlate.Length.message}")
     private String licensePlate;
 
     @NotNull(message = "Car repair date must not be null")
