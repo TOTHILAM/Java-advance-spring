@@ -24,7 +24,7 @@ public class CarMapper {
         dto.setCustomerName(car.getCustomerName());
         dto.setCatalog(car.getCatalog());
         dto.setCarMaker(car.getCarMaker());
-        return dto;
+        return dto.withSelfRel();
     }
 
     public static void map(CarUpdateForm form, Car car) {

@@ -27,7 +27,7 @@ public class AccessoryMapper {
         var car = accessory.getCar();
         dto.setLicensePlate(car.getLicensePlate());
         dto.setRepairDate(car.getRepairDate());
-        return dto;
+        return dto.withSelfRel();
     }
 
     public static void map(AccessoryUpdateform form, Accessory accessory) {
