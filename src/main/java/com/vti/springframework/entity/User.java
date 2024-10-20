@@ -4,30 +4,35 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
 
-@Getter
 @Setter
+@Getter
 @Entity
-@Table(name = "comment")
-public class Comment {
+@Table(name = "user")
+public class User {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private  Long id;
 
-    @Column(name = "name", length = 50,nullable = false)
+    @Column(name = "name", length = 50, nullable = false)
     private String name;
 
-    @Column(name = "email", length = 75,nullable = false)
+    @Column(name = "username", length = 50, unique = true, nullable = false)
+    private String username;
+
+    @Column(name = "email", length = 50, unique = true, nullable = false)
     private String email;
 
-    @Column(name = "body", length = 100,nullable = false)
-    private String body;
+    @Column(name = "password", length = 100, nullable = false)
+    private String password;
+
+    @Column(name = "role", nullable = false)
+    @Enumerated(value = EnumType.STRING)
+    private Role role;
 
     @Column(name = "created_at", nullable = false, updatable = false)
     @CreationTimestamp
@@ -37,8 +42,7 @@ public class Comment {
     @UpdateTimestamp
     private LocalDateTime updatedAt;
 
-    @ManyToOne
-    @JoinColumn(name = "post_id", referencedColumnName = "id", nullable = false)
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    private Post post;
+    public enum Role {
+        ADMIN, EMPLOYEE, MANAGER
+    }
 }

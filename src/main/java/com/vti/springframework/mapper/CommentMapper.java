@@ -20,8 +20,8 @@ public class CommentMapper {
         dto.setName(comment.getName());
         dto.setEmail(comment.getEmail());
         dto.setBody(comment.getBody());
-        dto.setCreateAt(comment.getCreateAt());
-        dto.setUpdateAt(comment.getUpdateAt());
+        dto.setCreatedAt(comment.getCreatedAt());
+        dto.setUpdatedAt(comment.getUpdatedAt());
         return dto.withSelRel();
     }
 

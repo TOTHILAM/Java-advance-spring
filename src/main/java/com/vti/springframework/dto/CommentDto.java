@@ -19,8 +19,8 @@ public class CommentDto extends RepresentationModel<CommentDto> {
     private String name;
     private String email;
     private String body;
-    private LocalDateTime createAt;
-    private LocalDateTime updateAt;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
 
     public CommentDto withSelRel() {
         var controller = methodOn(CommentController.class);

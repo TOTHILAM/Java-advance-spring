@@ -17,8 +17,8 @@ public class PostDto extends RepresentationModel<PostDto> {
     private String title;
     private String description;
     private String content;
-    private LocalDateTime createAt;
-    private LocalDateTime updateAt;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
 
     public PostDto withSelfRel() {
         var contrller = methodOn(PostController.class);
