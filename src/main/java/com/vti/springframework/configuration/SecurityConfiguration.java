@@ -1,5 +1,6 @@
 package com.vti.springframework.configuration;
 
+import com.vti.springframework.entity.User;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -22,6 +23,12 @@ public class SecurityConfiguration {
                 .sessionManagement(customizer -> customizer
                         .sessionCreationPolicy((SessionCreationPolicy.STATELESS)))
                 .authorizeHttpRequests(customizer -> customizer
+                        .requestMatchers(HttpMethod.DELETE)
+                        .hasAuthority(User.Role.ADMIN.name())
+                        .requestMatchers(HttpMethod.POST, "/api/v1/post/**", "/api/v1/comments/**")
+                        .hasAnyAuthority(User.Role.ADMIN.name(), User.Role.MANAGER.name())
+                        .requestMatchers(HttpMethod.PUT, "/api/v1/post/**", "/api/v1/comments/**")
+                        .hasAnyAuthority(User.Role.ADMIN.name(), User.Role.MANAGER.name())
                         .requestMatchers(HttpMethod.POST, "/api/v1/users")
                         .permitAll()
                         .anyRequest()
