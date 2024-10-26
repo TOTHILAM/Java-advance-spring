@@ -1,45 +1,9 @@
-2024-10-26 23:58:22.905 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
-2024-10-26 23:58:22.986 [main] INFO  com.vti.springframework.SpringFrameworkApplication - Starting SpringFrameworkApplication using Java 22.0.1 with PID 3959 (/Users/user/Documents/học IT/railway85/java advance/spring-framework/target/classes started by user in /Users/user/Documents/học IT/railway85/java advance/spring-framework)
-2024-10-26 23:58:22.995 [main] INFO  com.vti.springframework.SpringFrameworkApplication - No active profile set, falling back to 1 default profile: "default"
-2024-10-26 23:58:24.761 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2024-10-26 23:58:24.886 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 105 ms. Found 3 JPA repository interfaces.
-2024-10-26 23:58:25.989 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
-2024-10-26 23:58:26.021 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
-2024-10-26 23:58:26.031 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
-2024-10-26 23:58:26.032 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.28]
-2024-10-26 23:58:26.143 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2024-10-26 23:58:26.145 [main] INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3074 ms
-2024-10-26 23:58:26.466 [main] INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
-2024-10-26 23:58:26.567 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.5.2.Final
-2024-10-26 23:58:26.627 [main] INFO  org.hibernate.cache.internal.RegionFactoryInitiator - HHH000026: Second-level cache disabled
-2024-10-26 23:58:27.279 [main] INFO  org.springframework.orm.jpa.persistenceunit.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
-2024-10-26 23:58:27.333 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-2024-10-26 23:58:28.114 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6d7bb5cc
-2024-10-26 23:58:28.117 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
-2024-10-26 23:58:30.465 [main] INFO  org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2024-10-26 23:58:30.488 [main] DEBUG org.hibernate.SQL - alter table comment drop foreign key FKs1slvnkuemjsq2kj4h3vhx7i1
-2024-10-26 23:58:30.505 [main] DEBUG org.hibernate.SQL - drop table if exists comment
-2024-10-26 23:58:30.515 [main] DEBUG org.hibernate.SQL - drop table if exists post
-2024-10-26 23:58:30.523 [main] DEBUG org.hibernate.SQL - drop table if exists `user`
-2024-10-26 23:58:30.540 [main] DEBUG org.hibernate.SQL - create table comment (created_at datetime(6) not null, id bigint not null auto_increment, post_id bigint not null, updated_at datetime(6) not null, name varchar(50) not null, email varchar(75) not null, body varchar(100) not null, primary key (id)) engine=InnoDB
-2024-10-26 23:58:30.555 [main] DEBUG org.hibernate.SQL - create table post (created_at datetime(6) not null, id bigint not null auto_increment, updated_at datetime(6) not null, title varchar(50) not null, description varchar(100) not null, content varchar(150) not null, primary key (id)) engine=InnoDB
-2024-10-26 23:58:30.568 [main] DEBUG org.hibernate.SQL - create table `user` (created_at datetime(6) not null, id bigint not null auto_increment, updated_at datetime(6) not null, email varchar(50) not null, name varchar(50) not null, username varchar(50) not null, password varchar(100) not null, role enum ('ADMIN','EMPLOYEE','MANAGER') not null, primary key (id)) engine=InnoDB
-2024-10-26 23:58:30.579 [main] DEBUG org.hibernate.SQL - alter table `user` add constraint UKhl4ga9r00rh51mdaf20hmnslt unique (email)
-2024-10-26 23:58:30.591 [main] DEBUG org.hibernate.SQL - alter table `user` add constraint UK5c856itaihtmi69ni04cmpc4m unique (username)
-2024-10-26 23:58:30.600 [main] DEBUG org.hibernate.SQL - alter table comment add constraint FKs1slvnkuemjsq2kj4h3vhx7i1 foreign key (post_id) references post (id) on delete cascade
-2024-10-26 23:58:30.630 [main] INFO  org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2024-10-26 23:58:31.453 [main] INFO  org.springframework.data.jpa.repository.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
-2024-10-26 23:58:32.285 [main] WARN  org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2024-10-26 23:58:32.446 [main] INFO  org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name userServiceImpl
-2024-10-26 23:58:33.415 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
-2024-10-26 23:58:33.453 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
-2024-10-26 23:58:33.473 [main] INFO  com.vti.springframework.SpringFrameworkApplication - Started SpringFrameworkApplication in 11.099 seconds (process running for 13.452)
-2024-10-26 23:58:33.726 [main] DEBUG org.hibernate.SQL - insert into `user` (created_at,email,name,password,role,updated_at,username) values (?,?,?,?,?,?,?)
-2024-10-26 23:58:33.744 [main] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:TIMESTAMP) <- [2024-10-26T23:58:33.718543]
-2024-10-26 23:58:33.745 [main] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:VARCHAR) <- [lamto@gmail.com]
-2024-10-26 23:58:33.745 [main] TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:VARCHAR) <- [Tô Thị Lâm]
-2024-10-26 23:58:33.745 [main] TRACE org.hibernate.orm.jdbc.bind - binding parameter (4:VARCHAR) <- [$2a$10$3peUz3gv/VU5909tc2yNc.LnitvjZB8Euu0/A8XUwi5HKqKysUbg6]
-2024-10-26 23:58:33.746 [main] TRACE org.hibernate.orm.jdbc.bind - binding parameter (5:ENUM) <- [ADMIN]
-2024-10-26 23:58:33.746 [main] TRACE org.hibernate.orm.jdbc.bind - binding parameter (6:TIMESTAMP) <- [2024-10-26T23:58:33.718650]
-2024-10-26 23:58:33.746 [main] TRACE org.hibernate.orm.jdbc.bind - binding parameter (7:VARCHAR) <- [lam.tt]
-2024-10-26 23:58:33.788 [main] TRACE org.hibernate.orm.jdbc.extract - extracted value (1:BIGINT) -> [1]
+2024-10-27 07:39:39.139 [HikariPool-1 housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=7h38m10s951ms).
+2024-10-27 08:38:52.474 [HikariPool-1 housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=59m13s336ms).
+2024-10-27 17:32:43.735 [HikariPool-1 housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=8h53m21s254ms).
+2024-10-27 18:55:05.364 [HikariPool-1 housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=24m20s949ms).
+2024-10-27 19:11:26.862 [HikariPool-1 housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=15m51s492ms).
+2024-10-27 19:30:52.147 [HikariPool-1 housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=16m25s265ms).
+2024-10-27 19:49:27.066 [HikariPool-1 housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=18m4s911ms).
+2024-10-27 20:08:29.483 [HikariPool-1 housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=18m2s355ms).
+2024-10-27 20:08:58.614 [HikariPool-1 housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Retrograde clock change detected (housekeeper delta=29s131ms), soft-evicting connections from pool.
