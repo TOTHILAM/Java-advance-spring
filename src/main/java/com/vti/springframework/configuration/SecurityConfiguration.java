@@ -1,6 +1,7 @@
 package com.vti.springframework.configuration;
 
 import com.vti.springframework.entity.User;
+import com.vti.springframework.exception.ErrorHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -14,7 +15,7 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfiguration {
     @Bean
     public SecurityFilterChain securityFilterChain (
-            HttpSecurity http
+            HttpSecurity http, ErrorHandler errorHandler
     ) throws Exception {
         http
                 .csrf(customizer -> customizer.disable())
@@ -22,6 +23,9 @@ public class SecurityConfiguration {
                 .httpBasic(customizer -> {})
                 .sessionManagement(customizer -> customizer
                         .sessionCreationPolicy((SessionCreationPolicy.STATELESS)))
+                .exceptionHandling(customizer -> customizer
+                        .authenticationEntryPoint(errorHandler)
+                        .accessDeniedHandler(errorHandler))
                 .authorizeHttpRequests(customizer -> customizer
                         .requestMatchers(HttpMethod.DELETE)
                         .hasAuthority(User.Role.ADMIN.name())
